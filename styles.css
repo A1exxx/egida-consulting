@@ -292,6 +292,43 @@ section{position:relative}
   .why-grid,.steps{grid-template-columns:1fr}
 }
 
+/* ---------- messenger icons (shared) ---------- */
+.msg-ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;flex:none;box-shadow:var(--sh-sm)}
+.msg-ico svg{width:24px;height:24px}
+.ico-wa{background:#25D366}
+.ico-tg{background:#29A9EB}
+.ico-max{background:linear-gradient(135deg,#4A90E2,#9B59D6)}
+.ico-phone{background:var(--navy-deep)}
+
+/* messenger row in contacts (navy bg) */
+.msg-row{display:flex;flex-direction:column;gap:13px;margin-top:4px}
+.msg-link{display:inline-flex;align-items:center;gap:13px;font-family:var(--f-head);font-weight:600;font-size:17px;color:#fff;transition:opacity .15s}
+.msg-link:hover{opacity:.85}
+.msg-link .sub{display:block;font-family:var(--f-body);font-weight:400;font-size:13px;color:var(--on-navy-mut)}
+.msg-link .tx{display:flex;flex-direction:column;line-height:1.25}
+
+/* footer messenger icons */
+.footer-msg{display:flex;gap:11px;margin-top:12px;justify-content:flex-end}
+.footer-msg a{transition:transform .15s ease}
+.footer-msg a:hover{transform:translateY(-2px)}
+.footer-msg .msg-ico{width:40px;height:40px}
+
+/* floating FAB widget */
+.fab{position:fixed;right:24px;bottom:24px;z-index:80;display:flex;flex-direction:column;align-items:flex-end;gap:13px}
+.fab-list{display:flex;flex-direction:column;align-items:flex-end;gap:13px;opacity:0;transform:translateY(12px) scale(.92);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+.fab.open .fab-list{opacity:1;transform:none;pointer-events:auto}
+.fab-item{display:flex;align-items:center;gap:11px}
+.fab-item .lbl{background:#fff;color:var(--ink);font-family:var(--f-head);font-weight:600;font-size:14px;padding:8px 14px;border-radius:10px;box-shadow:var(--sh-sm);white-space:nowrap;opacity:0;transform:translateX(8px);transition:opacity .22s ease,transform .22s ease}
+.fab.open .fab-item .lbl{opacity:1;transform:none}
+.fab-toggle{position:relative;width:62px;height:62px;border-radius:50%;background:var(--navy-deep);color:#fff;display:grid;place-items:center;box-shadow:var(--sh-md);transition:transform .2s ease,background .2s ease}
+.fab-toggle:hover{transform:scale(1.05)}
+.fab-toggle svg{width:28px;height:28px;transition:transform .25s ease;position:relative;z-index:1}
+.fab.open .fab-toggle{background:var(--navy)}
+.fab.open .fab-toggle svg{transform:rotate(90deg)}
+.fab-toggle .pulse{position:absolute;inset:0;border-radius:50%;background:var(--navy-deep);animation:fabpulse 2.8s ease-out infinite;z-index:0}
+@keyframes fabpulse{0%{transform:scale(1);opacity:.45}70%,100%{transform:scale(1.7);opacity:0}}
+@media (max-width:760px){.fab{right:16px;bottom:16px}.fab-toggle{width:56px;height:56px}}
+
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}

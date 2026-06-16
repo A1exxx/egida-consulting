@@ -316,4 +316,21 @@
       setTimeout(function () { btn.textContent = 'Отправить заявку'; btn.disabled = false; }, 6000);
     });
   }
+
+  /* ---------- floating messenger widget ---------- */
+  var fab = document.getElementById('fab');
+  var fabToggle = document.getElementById('fabToggle');
+  if (fab && fabToggle) {
+    fabToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = fab.classList.toggle('open');
+      fabToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (fab.classList.contains('open') && !fab.contains(e.target)) {
+        fab.classList.remove('open');
+        fabToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 })();
