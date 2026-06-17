@@ -350,4 +350,47 @@
       }
     });
   }
+
+  /* ---------- НДС-калькулятор ---------- */
+  var cRev = document.getElementById('calc-rev');
+  var cShare = document.getElementById('calc-share');
+  var cShareVal = document.getElementById('calc-share-val');
+  var cGo = document.getElementById('calc-go');
+  if (cRev && cShare && cGo) {
+    function fmt(n) { return Math.round(n).toLocaleString('ru-RU'); }
+    // форматирование поля дохода пробелами
+    cRev.addEventListener('input', function () {
+      var d = cRev.value.replace(/\D/g, '').slice(0, 12);
+      cRev.value = d ? Number(d).toLocaleString('ru-RU') : '';
+    });
+    cShare.addEventListener('input', function () { cShareVal.textContent = cShare.value + '%'; });
+
+    cGo.addEventListener('click', function () {
+      var R = Number(cRev.value.replace(/\D/g, ''));
+      if (!R) { cRev.focus(); cRev.classList.add('invalid'); return; }
+      cRev.classList.remove('invalid');
+      var s = Number(cShare.value) / 100;
+      var v5 = R * 0.05;
+      var v7 = R * 0.07;
+      var v22 = R * (1 - s) * 22 / 122; // исходящий НДС минус вычет входящего
+      document.getElementById('cc5').textContent = fmt(v5) + ' ₽';
+      document.getElementById('cc7').textContent = fmt(v7) + ' ₽';
+      document.getElementById('cc22').textContent = fmt(v22) + ' ₽';
+
+      var rates = [{ r: '5%', v: v5, el: 5 }, { r: '7%', v: v7, el: 7 }, { r: '22% (общая)', v: v22, el: 22 }];
+      rates.sort(function (a, b) { return a.v - b.v; });
+      var best = rates[0];
+      document.querySelectorAll('.calc-card').forEach(function (c) {
+        c.classList.toggle('best', Number(c.getAttribute('data-rate')) === best.el);
+      });
+      var save = rates[rates.length - 1].v - best.v;
+      document.getElementById('calc-verdict').innerHTML =
+        'Ориентировочно выгоднее ставка <b>' + best.r + '</b> — НДС около <b>' + fmt(best.v) +
+        ' ₽/год</b>. Разница с худшим вариантом ~' + fmt(save) + ' ₽.';
+      var res = document.getElementById('calc-result');
+      res.hidden = false;
+      ymGoal('calc_used');
+      res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
 })();

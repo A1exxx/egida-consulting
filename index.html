@@ -122,6 +122,41 @@
   </div>
 </section>
 
+<!-- ========== НДС CALCULATOR (lead magnet) ========== -->
+<section class="calc" id="nds">
+  <div class="container">
+    <div class="section-head center">
+      <span class="kicker">Бесплатный расчёт</span>
+      <h2>Какая ставка НДС вам выгоднее: 5%, 7% или 22%?</h2>
+      <p class="section-sub">Прикиньте за 20 секунд. Введите оборот и долю закупок с НДС — покажем ориентир. Точную ставку с учётом порогов и вашей специфики подберём на бесплатной консультации.</p>
+    </div>
+    <div class="calc-box">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label for="calc-rev">Годовой доход, ₽</label>
+          <input type="text" id="calc-rev" inputmode="numeric" placeholder="например, 30 000 000">
+        </div>
+        <div class="calc-field">
+          <label for="calc-share">Доля закупок с НДС в расходах: <b id="calc-share-val">30%</b></label>
+          <input type="range" id="calc-share" min="0" max="90" value="30" step="5">
+          <span class="calc-hint">Сколько ваших расходов — у поставщиков с НДС (товары, материалы, услуги)</span>
+        </div>
+        <button class="btn btn-gold btn-lg btn-block" id="calc-go">Рассчитать ставку</button>
+      </div>
+      <div class="calc-result" id="calc-result" hidden>
+        <div class="calc-cards">
+          <div class="calc-card" data-rate="5"><span class="cc-rate">НДС 5%</span><span class="cc-sum" id="cc5">—</span><span class="cc-cap">без вычета входящего</span></div>
+          <div class="calc-card" data-rate="7"><span class="cc-rate">НДС 7%</span><span class="cc-sum" id="cc7">—</span><span class="cc-cap">без вычета входящего</span></div>
+          <div class="calc-card" data-rate="22"><span class="cc-rate">НДС 22%</span><span class="cc-sum" id="cc22">—</span><span class="cc-cap">с вычетом входящего</span></div>
+        </div>
+        <p class="calc-verdict" id="calc-verdict"></p>
+        <p class="calc-disclaimer">Это предварительная оценка по году. Реальная нагрузка зависит от порога дохода (5% — для дохода 60–250 млн ₽), структуры расходов и других факторов. <strong>Точный расчёт — бесплатно на консультации.</strong></p>
+        <button class="btn btn-primary btn-lg btn-block" data-quiz="buh">Получить точный расчёт от специалиста</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== LAW BAND ========== -->
 <section class="lawband">
   <div class="container lawband-inner">
@@ -288,6 +323,19 @@
   </div>
 </section>
 
+<!-- ========== TRUST STRIP ========== -->
+<section class="truststrip">
+  <div class="container">
+    <div class="truststrip-inner">
+      <span class="ti"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Работаем по договору</span>
+      <span class="ti"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6l-7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Полная конфиденциальность</span>
+      <span class="ti"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Онлайн по всей России</span>
+      <span class="ti"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Гарантия качества</span>
+    </div>
+    <p class="tools-line">Работаем в ваших программах: <b>1С</b> · <b>СБИС</b> · <b>Контур</b> · <b>Эльба</b> · <b>МойСклад</b></p>
+  </div>
+</section>
+
 <!-- ========== PROCESS ========== -->
 <section class="process" id="process">
   <div class="container">
@@ -413,7 +461,7 @@
           </select>
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block">Отправить заявку</button>
-        <p class="form-fine">Нажимая кнопку, вы соглашаетесь на обработку данных для обратной связи. Заявка откроется в WhatsApp — останется только нажать «отправить».</p>
+        <p class="form-fine">Нажимая кнопку, вы соглашаетесь на <a href="privacy.html" target="_blank" rel="noopener">обработку персональных данных</a>. Мы свяжемся с вами удобным способом — перезвоним или напишем.</p>
       </form>
     </div>
   </div>
@@ -439,9 +487,17 @@
     </div>
   </div>
   <div class="container footer-fine">
-    <p>© 2026 Эгида. Информация на сайте не является публичной офертой. Стоимость услуг уточняется после консультации.</p>
+    <p>© 2026 Эгида. Информация на сайте не является публичной офертой. Стоимость услуг уточняется после консультации. · <a href="privacy.html">Политика конфиденциальности</a></p>
   </div>
 </footer>
+
+<!-- ========== STICKY MOBILE CTA ========== -->
+<div class="mcta" aria-label="Быстрая связь">
+  <a class="btn btn-ghost mcta-call" href="tel:+79191877350" aria-label="Позвонить">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+  </a>
+  <button class="btn btn-gold" data-quiz="all">Бесплатная консультация</button>
+</div>
 
 <!-- ========== FLOATING MESSENGER WIDGET ========== -->
 <div class="fab" id="fab">

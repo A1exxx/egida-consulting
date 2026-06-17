@@ -342,6 +342,52 @@ section{position:relative}
 @keyframes fabpulse{0%{transform:scale(1);opacity:.45}70%,100%{transform:scale(1.7);opacity:0}}
 @media (max-width:760px){.fab{right:16px;bottom:16px}.fab-toggle{width:56px;height:56px}}
 
+/* ---------- НДС calculator ---------- */
+.calc{padding:78px 0;background:var(--bg-soft)}
+.calc-box{max-width:780px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);padding:32px;box-shadow:var(--sh-md)}
+.calc-field{margin-bottom:22px}
+.calc-field label{display:block;font-family:var(--f-head);font-weight:500;font-size:15px;color:var(--text-2);margin-bottom:10px}
+.calc-field label b{color:var(--navy)}
+.calc-field input[type=text]{width:100%;padding:14px 16px;border:1.5px solid var(--border-2);border-radius:12px;font-family:var(--f-head);font-size:20px;color:var(--ink);background:#fff;transition:border-color .15s,box-shadow .15s}
+.calc-field input[type=text]:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(30,58,138,.12)}
+.calc-field input[type=range]{width:100%;accent-color:var(--gold);height:6px}
+.calc-hint{display:block;font-size:13px;color:var(--text-muted);margin-top:8px}
+.calc-result{margin-top:8px;border-top:1px solid var(--border);padding-top:24px}
+.calc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.calc-card{border:1.5px solid var(--border);border-radius:var(--r-md);padding:18px 14px;text-align:center;transition:border-color .2s,background .2s,transform .2s}
+.calc-card.best{border-color:var(--green);background:var(--green-soft);transform:translateY(-3px)}
+.cc-rate{display:block;font-family:var(--f-head);font-weight:600;font-size:15px;color:var(--text-2)}
+.cc-sum{display:block;font-family:var(--f-head);font-weight:700;font-size:24px;color:var(--ink);margin:6px 0 4px;letter-spacing:-.01em}
+.calc-card.best .cc-sum{color:var(--green)}
+.cc-cap{display:block;font-size:12px;color:var(--text-muted);line-height:1.3}
+.calc-verdict{font-family:var(--f-head);font-weight:600;font-size:18px;color:var(--ink);text-align:center;margin:6px 0 14px}
+.calc-verdict b{color:var(--green)}
+.calc-disclaimer{font-size:13.5px;color:var(--text-muted);line-height:1.5;margin-bottom:20px;text-align:center}
+@media (max-width:600px){.calc-cards{grid-template-columns:1fr;gap:10px}.calc-box{padding:22px}}
+
+/* ---------- sticky mobile CTA bar ---------- */
+.mcta{display:none}
+@media (max-width:760px){
+  .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:70;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--border)}
+  .mcta .btn{flex:1;padding:13px 10px;font-size:15px}
+  .mcta .mcta-call{flex:0 0 52px}
+  body{padding-bottom:68px}
+  .fab{bottom:80px}
+}
+
+/* ---------- trust strip ---------- */
+.truststrip{background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.truststrip-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px;padding:22px 0}
+.truststrip .ti{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-head);font-weight:500;font-size:15px;color:var(--text-2)}
+.truststrip .ti svg{color:var(--green);flex:none}
+.tools-line{text-align:center;font-size:14.5px;color:var(--text-muted);padding:0 0 22px}
+.tools-line b{color:var(--text-2);font-family:var(--f-head);font-weight:600}
+
+/* ---------- form consent ---------- */
+.consent{display:flex;align-items:flex-start;gap:9px;margin-top:6px;font-size:12.5px;color:var(--text-muted);line-height:1.45}
+.consent input{margin-top:3px;flex:none;width:16px;height:16px;accent-color:var(--navy)}
+.consent a{color:var(--text-2);text-decoration:underline}
+
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
