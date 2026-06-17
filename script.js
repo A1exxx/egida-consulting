@@ -7,6 +7,21 @@
 
   var WA_PHONE = '79191877350';          // куда уходит заявка (WhatsApp)
   var WA_LABEL = '+7 919 187-73-50';
+  var YM_ID = 109912832;                 // счётчик Яндекс.Метрики
+
+  // отправка цели в Метрику (безопасно, если счётчик ещё не загрузился)
+  function ymGoal(goal) { try { if (window.ym) window.ym(YM_ID, 'reachGoal', goal); } catch (e) {} }
+
+  // цели на клики по телефону и WhatsApp (делегированно)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) ymGoal('click_phone');
+    else if (href.indexOf('wa.me') !== -1) ymGoal('click_whatsapp');
+    else if (href.indexOf('t.me') !== -1) ymGoal('click_telegram');
+    else if (href.indexOf('max.ru') !== -1) ymGoal('click_max');
+  });
 
   /* ---------- smooth anchor scroll ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
@@ -80,6 +95,7 @@
       localStorage.setItem('egida_leads', JSON.stringify(saved));
     } catch (e) {}
 
+    ymGoal('lead_form');
     window.open('https://wa.me/' + WA_PHONE + '?text=' + text, '_blank', 'noopener');
   }
 
@@ -277,6 +293,7 @@
   }
 
   function renderSuccess() {
+    ymGoal('quiz_done');
     bar.style.width = '100%';
     var d = document.createElement('div');
     d.className = 'quiz-success';
